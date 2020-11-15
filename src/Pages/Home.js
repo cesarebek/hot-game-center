@@ -33,6 +33,34 @@ const Home = () => {
           />
         ))}
       </Games>
+      <h2>Popular Games</h2>
+      <Games>
+        {popular.map((game) => (
+          <Game
+            name={game.name}
+            released={game.released}
+            id={game.id}
+            //These image are extremly huge and takes a lot to load, I've to fix it.
+            image={game.background_image}
+            //React needs a key for each game of the map
+            key={game.id}
+          />
+        ))}
+      </Games>
+      <h2>New Games</h2>
+      <Games>
+        {newGames.map((game) => (
+          <Game
+            name={game.name}
+            released={game.released}
+            id={game.id}
+            //These image are extremly huge and takes a lot to load, I've to fix it.
+            image={game.background_image}
+            //React needs a key for each game of the map
+            key={game.id}
+          />
+        ))}
+      </Games>
     </GameList>
   );
 };
