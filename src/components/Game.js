@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 //Redux
 import { useDispatch } from 'react-redux';
 import { loadDetails } from '../actions/detailsAction';
+//Router
+import { Link } from 'react-router-dom';
 
 //Each Game will be displayed in Home.js
 const Game = ({ name, released, image, id }) => {
@@ -15,9 +17,11 @@ const Game = ({ name, released, image, id }) => {
   };
   return (
     <StyledGame onClick={loadDetailsHandler}>
-      <h3>{name}</h3>
-      <h3>{released}</h3>
-      <img src={image} alt="game-cover" />
+      <Link to={`/game/${id}`}>
+        <h3>{name}</h3>
+        <h3>{released}</h3>
+        <img src={image} alt="game-cover" />
+      </Link>
     </StyledGame>
   );
 };
@@ -27,6 +31,7 @@ const StyledGame = styled(motion.div)`
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
   border-radius: 1rem;
+  cursor: pointer;
   img {
     width: 100%;
     //Makes all the images with same sizes
