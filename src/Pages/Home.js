@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 //Components
 import Game from '../components/Game';
+import GameDetails from '../components/GameDetails';
 
 const Home = () => {
   //FETCH GAMES
@@ -19,6 +20,7 @@ const Home = () => {
 
   return (
     <GameList>
+      <GameDetails />
       <h2>Upcoming Games</h2>
       <Games>
         {upComing.map((game) => (

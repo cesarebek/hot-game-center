@@ -2,11 +2,19 @@ import React from 'react';
 //Styling & Animations
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+//Redux
+import { useDispatch } from 'react-redux';
+import { loadDetails } from '../actions/detailsAction';
 
 //Each Game will be displayed in Home.js
 const Game = ({ name, released, image, id }) => {
+  //Load Details
+  const dispatch = useDispatch();
+  const loadDetailsHandler = () => {
+    dispatch(loadDetails(id));
+  };
   return (
-    <StyledGame>
+    <StyledGame onClick={loadDetailsHandler}>
       <h3>{name}</h3>
       <h3>{released}</h3>
       <img src={image} alt="game-cover" />
