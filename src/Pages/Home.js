@@ -21,7 +21,9 @@ const Home = () => {
     dispatch(loadGames());
   }, [dispatch]);
   //GET DATA BACK [useSelector allows me to grab the state]
-  const { popular, upComing, newGames } = useSelector((state) => state.games);
+  const { popular, upComing, newGames, searched } = useSelector(
+    (state) => state.games
+  );
 
   return (
     <GameList>
@@ -29,6 +31,26 @@ const Home = () => {
         <AnimatePresence>
           {pathId && <GameDetails pathId={pathId} />}
         </AnimatePresence>
+        {searched.length ? (
+          <div className="searched">
+            <h2>Searched Games</h2>
+            <Games>
+              {searched.map((game) => (
+                <Game
+                  name={game.name}
+                  released={game.released}
+                  id={game.id}
+                  //These image are extremly huge and takes a lot to load, I've to fix it.
+                  image={game.background_image}
+                  //React needs a key for each game of the map
+                  key={game.id}
+                />
+              ))}
+            </Games>
+          </div>
+        ) : (
+          ''
+        )}
         <h2>Upcoming Games</h2>
         <Games>
           {upComing.map((game) => (
