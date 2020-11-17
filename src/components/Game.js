@@ -9,6 +9,8 @@ import { loadDetails } from '../actions/detailsAction';
 import { Link } from 'react-router-dom';
 //Import util
 import { smallImage } from '../util';
+//Animation
+import { popUp } from '../animations';
 
 //Each Game will be displayed in Home.js
 const Game = ({ name, released, image, id }) => {
@@ -21,7 +23,13 @@ const Game = ({ name, released, image, id }) => {
     dispatch(loadDetails(id));
   };
   return (
-    <StyledGame layoutId={stringPathId} onClick={loadDetailsHandler}>
+    <StyledGame
+      variants={popUp}
+      initial="hidden"
+      animate="show"
+      layoutId={stringPathId}
+      onClick={loadDetailsHandler}
+    >
       <Link to={`/game/${id}`}>
         <motion.h3 layoutId={`title ${stringPathId}`}>{name}</motion.h3>
         <h3>{released}</h3>
